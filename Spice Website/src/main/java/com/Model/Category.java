@@ -10,6 +10,9 @@ public class Category {
 		this.categoryTitle = categoryTitle;
 		this.categoryDescription = categoryDescription;
 	}
+	public Category() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getCategoryId() {
 		return categoryId;
 	}

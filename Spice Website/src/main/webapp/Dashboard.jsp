@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swayambhulaxmi Spice Dashboard</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <%@include file="/components/fontawesome.jsp" %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,13 +51,13 @@
               <li><a class="dropdown-item" href="pickles.jsp">Pickles</a></li>
             </ul>
         </div>
-        <a class="home" href="#">Home</a>
+        <a class="home" href="Dashboard.jsp">Home</a>
         <a class="about" href="#">About us</a>  
         <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
         <a class="cart" href="#">My cart</a>
         <a class="log" href="#"><img src="img/user.png" alt="user"></a>
-        <a class="login" href="#">Login</a>
-        <a class="register" href="#">Register</a>
+        <a class="login" href="Login.jsp">Login</a>
+        <a class="register" href="Register.jsp">Register</a>
     </nav>
     <main>
         <section class="sec1">
@@ -83,7 +81,7 @@
                 <img class="a1" src="img/navdeep-ammla-cnOWJhLKYN8-unsplash.jpg" alt="jar3">
                 <hr>
                 <h2>Pickles</h2>
-                <a class="view" href="Pickles.jsp">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
+                <a class="view" href="pickles.jsp">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
                 <br>
                 <img class="a1" src="img/1.jpg" alt="jar1">
                 <img class="a1" src="img/2.jpg" alt="jar2">
@@ -96,11 +94,7 @@
                     <td class="td1">
                         <h4>"I recently tried the pavbhaji masala from Swayambhulaxmi spice, and I have to say, it's absolutely fantastic! The blend of spices is perfectly balanced, with just the right amount of heat and flavor. The aroma alone is enough to make your mouth water."</h5>
                         <h5>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                        <%@include file="/components/star.jsp" %>
                         </h5>    
                         <h5>-Anushri Chitte</h5>
                     </td>
@@ -133,7 +127,7 @@
 
     <footer>
         <a href="#">FAQ</a>
-        <a href="mailto:swayambhulaxmi14@gmail.com">Contact us</a>
+        <a href="mailto:patilketki@email.com">Contact us</a>
         <a href="http://facebook.com/Swati.patil2512" target="_blank" rel="noopener noreferrer">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="https://www.instagram.com/invites/contact/?i=sjajpxffrbfi&utm_content=mrquill" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="#">Terms of Use</a>

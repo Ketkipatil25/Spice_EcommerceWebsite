@@ -12,12 +12,11 @@ public class LoginDao {
 		Connection con=MyConnection.getConnection();
 		int i=0;
 		try {
-			PreparedStatement ps=con.prepareStatement("INSERT INTO user() VALUES(?,?,?,?)");
+			PreparedStatement ps=con.prepareStatement("INSERT INTO user(username,name,email,password) VALUES(?,?,?,?)");
 			ps.setString(1, u.getUsername());
 			ps.setString(2, u.getName());
 			ps.setString(3, u.getEmail());
 			ps.setString(4, u.getPassword());
-			
 			i=ps.executeUpdate();		
 			
 			if(i>0) {
@@ -40,17 +39,19 @@ public int checkRegister(User u) {
 	Connection con=MyConnection.getConnection();
 	int i=0;
 	try {
-		PreparedStatement ps=con.prepareStatement("SELECT * FROM user WHERE username=?");
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM user WHERE username=? OR email=?");
 		ps.setString(1,u.getUsername());
-		System.out.println("Username: "+u.getUsername());
+		ps.setString(2,u.getEmail());
+		System.out.println("Username: "+u.getUsername()+" Email: "+u.getEmail());
 		ResultSet rs=ps.executeQuery();
 		
 		if(rs.next()) {
 			System.out.println("User already registered!");
 			System.out.println(u.getUsername()+" "+rs.getString(1));
-			if(u.getUsername().equals(rs.getString(1))) {
+			if(u.getUsername().trim().equals(rs.getString(1)) || u.getEmail().trim().equals(rs.getString(3)) ) {
 				i=1;
 			}
+//			
 		}
 	}catch(SQLException e) {
 		e.printStackTrace();
@@ -64,26 +65,20 @@ public int checkRegister(User u) {
 	
 }
 
-public int validateUser(User u) {
+public User validateUser(User u) {
 	Connection con=MyConnection.getConnection();
-	int i=0;
+	User u1=null;
 	try {
-		PreparedStatement ps=con.prepareStatement("SELECT * FROM user WHERE username=?");
-		ps.setString(1,u.getUsername());
-		System.out.println("Username: "+u.getUsername());
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM user WHERE email=?");
+		ps.setString(1,u.getEmail());
+		System.out.println("Email: "+u.getEmail());
 		ResultSet rs=ps.executeQuery();
 		
 		if(rs.next()) {
-			System.out.println(u.getPassword()+" "+rs.getString(3));
-			if(u.getPassword().equals(rs.getString(3))) {
 			System.out.println(u.getPassword()+" "+rs.getString(4));
 			if(u.getPassword().equals(rs.getString(4))) {
-			System.out.println(u.getPassword()+" "+rs.getString(4));
-			if(u.getPassword().equals(rs.getString(4))) {
-				i=1;
+				u1=new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
 			}
-		}
-	}
 			}
 	}catch(SQLException e) {
 		e.printStackTrace();
@@ -93,6 +88,6 @@ public int validateUser(User u) {
 	}catch(SQLException e) {
 		e.printStackTrace();
 	}
-	return i;
+	return u1;
 }
 }

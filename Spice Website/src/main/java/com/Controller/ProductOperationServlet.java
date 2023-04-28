@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Dao.CategoryDao;
 import com.Dao.LoginDao;
@@ -48,13 +49,18 @@ public class ProductOperationServlet extends HttpServlet {
 			CategoryDao cd=new CategoryDao();
 			int i=cd.addCategory(c);
 			if(i>0) {
-				System.out.println("Category Added Succesfully!: "+c);
+				HttpSession httpsession=request.getSession();
+				httpsession.setAttribute("message", "Category Added Succesfully!: "+categoryId);
+				System.out.println("Category Added Succesfully!: "+categoryId);
+				response.sendRedirect("admin.jsp");
+				return;
 			}else {
 				System.out.println("Category Not Added!");
 			}
 		}
 		else if(operation.equals("addProduct")) {
 //			add product
+			
 		}
 		
 	}

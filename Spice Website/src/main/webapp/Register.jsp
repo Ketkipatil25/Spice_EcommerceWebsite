@@ -8,6 +8,14 @@
  <%@include file="/components/common_css_js.jsp" %>
 </head>
 <body>
+ <header>
+        <table>
+            <tr>
+                <th><img src="img/5 (1) (1).png" alt=""></th>
+                <th><h1>Swayambhulaxmi Spice</h1></th>
+            </tr>
+        </table>
+    </header>
 <%@include file="/components/navbar.jsp" %>
 	<div class="container-fluid">
 		<div class="row px-5 mt-3 m-0 ">
@@ -37,7 +45,7 @@
 		<div class="card-body px-5">
 		<div class="container">
 		</div>
-		<img  src="images/signup.png" style="max-width:300px;" class="img-fluid" alt="img not found">
+		<img  src="img/signup.png" style="max-width:300px;" class="img-fluid" alt="img not found">
 			<h3 class="text-center my-3">Sign Up</h3>
 			<form action="RegisterController" method="post">
 				<div class="form-group">

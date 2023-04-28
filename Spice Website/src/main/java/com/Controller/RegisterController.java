@@ -36,9 +36,9 @@ public class RegisterController extends HttpServlet {
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
-		
 		User u=new User(username,name,email,password);
 		u.setUsername(username);
+		u.setName(name);
 		u.setEmail(email);
 		u.setPassword(password);
 		System.out.println(u.toString());
@@ -47,7 +47,7 @@ public class RegisterController extends HttpServlet {
 		
 		if(j>0){
 			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute("message2", "User Already Registered!: "+username);
+			httpSession.setAttribute("message2", "User Already Registered Please Login");
 			System.out.println("User Already Registered!"+u);
 			response.sendRedirect("Register.jsp");
 //			response.sendRedirect("Login.jsp");
@@ -62,6 +62,7 @@ public class RegisterController extends HttpServlet {
 				response.sendRedirect("Register.jsp");
 			}else {
 				System.out.println("User Not Registered!");
+				response.sendRedirect("Register.jsp");
 			}
 			
 		}
