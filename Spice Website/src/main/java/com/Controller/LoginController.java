@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet {
 			System.out.println("Valid User");
 			
 //			login
-			session.setAttribute("user", u1);
+			session.setAttribute("User", u1);
 //			User user=(User)session.getAttribute("username");
 			
 //			if(username.getUserType().equals("admin")) {
@@ -71,16 +71,11 @@ public class LoginController extends HttpServlet {
 				System.out.println("Admin Logged in ->");
 			}
 			
-			else if(u1.getUserType().equals("user")) {
+			else if(u1.getUserType().equals("User")) {
 //				normal user:normal.jsp
 				response.sendRedirect("normal.jsp");
 				System.out.println("User Logged in ->");
 			}
-			
-			else {
-				System.out.println("We have not identified user type.");
-			}
-			
 			
 			
 //			response.sendRedirect("Dashboard.jsp");

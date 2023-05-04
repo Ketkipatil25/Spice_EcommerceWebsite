@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="com.Model.User" %>
+ 
+
+
+<%
+	
+	User user1=(User)session.getAttribute("User");
+
+%>
+
+
 <style>
 	* {
 	    box-sizing: border-box;
@@ -83,7 +96,7 @@
 	}
 	
 	.log{
-	    padding: 20px 5px 20px 730px;
+	    padding: 20px 5px 20px 680px;
 	}
 	
 	.login:hover , .register:hover{
@@ -130,8 +143,34 @@
         <a class="home" href="Dashboard.jsp">Home</a>
         <a class="about" href="#">About us</a>  
         <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
-        <a class="cart" href="#">My cart</a>
-        <a class="log" href="#"><img src="img/user.png" alt="user"></a>
-        <a class="login" href="Login.jsp">Login</a>
-        <a class="register" href="Register.jsp">Register</a>
+        <a class="cart" href="#" data-bs-toggle="modal" data-bs-target="#cart">My cart<span class="cart-items">(0)</span></a>
+        
+        <%
+        if(user1 == null){
+        	
+        
+ 			%>   
+ 			<a class="log" href="Login.jsp"><img src="img/user.png" alt="user"></a>
+	        <a class="login" href="Login.jsp">Login</a>
+	        <a class="register" href="Register.jsp">Register</a>
+ 			
+ 			    
+        <% 
+        }
+        else{
+        	
+		%>    
+		
+			<a class="log" href="Login.jsp"><img src="img/user.png" alt="user"></a>
+			<a class="login" href="<%= user1.getUserType().equals("Admin") ?  "admin.jsp" : "normal.jsp" %>"><%=user1.getUsername()%></a>
+	        <a class="register" href="LogoutServlet">Logout</a>
+		
+		
+		<%     		
+        	
+        }
+        
+        %>
+        
+        
     </nav>

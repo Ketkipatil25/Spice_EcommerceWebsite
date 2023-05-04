@@ -28,31 +28,7 @@ public class MyConnection {
 		System.out.println("Connection : "+con);
 		 return con;
 	 }
-	public int validateUser(User u) {
-		Connection con=MyConnection.getConnection();
-		int i=0;
-		try {
-			PreparedStatement ps=con.prepareStatement("SELECT * FROM user WHERE username=?");
-			ps.setString(1,u.getUsername());
-			System.out.println("Username: "+u.getUsername());
-			ResultSet rs=ps.executeQuery();
-			
-			if(rs.next()) {
-				System.out.println(u.getPassword()+" "+rs.getString(3));
-				if(u.getPassword().equals(rs.getString(3))) {
-					i=1;
-				}
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		try {
-			con.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return i;
-	}
+
 	public static void main(String[] args) {
 		Connection con=getConnection();
 		System.out.println(con);

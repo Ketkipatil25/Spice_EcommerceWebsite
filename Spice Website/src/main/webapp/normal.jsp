@@ -6,15 +6,16 @@
 
 <%
 	
-	User user=(User)session.getAttribute("username");
+	User user=(User)session.getAttribute("User");
 	if(user==null){
 		session.setAttribute("message","You are not logged in !! Login first.");
 		response.sendRedirect("Login.jsp");
 		return;
 	}
 	else{
-		if(user.getUserType().equals("User") || user.getUserType().equals("Admin"))
+		if(user.getUserType().equals("User"))
 		{
+			System.out.println("redirected from normal");
 			response.sendRedirect("Dashboard.jsp");
 		}
 		else{

@@ -13,7 +13,7 @@ public class CategoryDao {
 		Connection con=MyConnection.getConnection();
 		int i=0;
 		try {
-			PreparedStatement ps=con.prepareStatement("INSERT INTO category_table() VALUES(?,?,?)");
+			PreparedStatement ps=con.prepareStatement("INSERT INTO category() VALUES(?,?,?)");
 			ps.setString(1, c.getCategoryId());
 			ps.setString(2, c.getCategoryTitle());
 			ps.setString(3, c.getCategoryDescription());

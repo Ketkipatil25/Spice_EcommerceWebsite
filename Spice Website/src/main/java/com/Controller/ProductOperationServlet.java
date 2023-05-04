@@ -32,14 +32,14 @@ public class ProductOperationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-
+ 
 		String operation=request.getParameter("operation");
 		if(operation.equals("addCategory")) {
 //			add category
 //			fetching category data
 			String categoryId=request.getParameter("categoryId");
-			String categoryTitle=request.getParameter("catTitle");
-			String categoryDescription=request.getParameter("catDescription");
+			String categoryTitle=request.getParameter("categoryTitle");
+			String categoryDescription=request.getParameter("categoryDescription");
 			
 			Category c=new Category(categoryId,categoryTitle,categoryDescription);
 			c.setCategoryId(categoryId);

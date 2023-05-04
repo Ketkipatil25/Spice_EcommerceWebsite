@@ -1,26 +1,15 @@
-<%@page import="com.Dao.CategoryDao"%>
+<%@page import="com.Dao.*"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.Model.User" %>
-<%@page import="com.Model.Category" %>
-<%@page import="java.util.*" %>
+<%@page import="com.Model.User" %>
+ 
 <%
-	
-	User user=(User)session.getAttribute("current-user");
-	if(user==null){
-		session.setAttribute("message","You are not logged in !! Login first.");
-		response.sendRedirect("Login.jsp");
-		return;
-	}
-	else{
-		if(user.getEmail().equals("normal"))
-		{
-			session.setAttribute("message","You are not admin !! Do not access this page.");
-			response.sendRedirect("Login.jsp");
-			return;
-		}
-	}
+Map<String,Double> usercount=HelperDao.getCount_User();
+Map<String,Double> categorycount=HelperDao.getCount_Category();
 %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -42,13 +31,14 @@
     	</header>		
 		<%@include file="components/navbar.jsp" %>
 		
-		<div class = "container">
-		<!-- first row -->
-		
-		
-		<div class="container-fluid mt-5">
+		<div class="container admin">
+		<div class="container-fluid">
 		<%@include file="components/message.jsp" %>
 		</div>
+		
+		</div>
+		<div class = "container">
+		<!-- first row -->
 			<div class = "row mt-5">
 			
 			<!-- column one of row one  -->
@@ -59,8 +49,7 @@
 							<div class= "container">
 								<img style= "max-width: 125px" class= "image fluid rounded-circle"  alt="user-img" src="img/team.png">
 							</div>
-							
-							<h2>3748</h2>
+							<h2><%= usercount.get("userCount") %></h2>
 							<h1 class = "text-uppercase text-muted">Users</h1>
 						</div>
 					</div>
@@ -75,7 +64,7 @@
 								<img style= "max-width: 125px" class= "image fluid rounded-circle"  alt="category-img" src="img/categories.png">
 							</div>
 							
-							<h2>987</h2>
+							<h2><%= categorycount.get("categoryCount") %></h2>
 							<h1 class = "text-uppercase text-muted">Categories</h1>
 						</div>
 					</div>
@@ -148,16 +137,17 @@
 		      <div class="modal-body">
 		      	
 		      	<form action="ProductOperationServlet" method="post">
-		      	
-		      	<input type="hidden" name="operation" value="addCategory">
-		      		
+		      		<input type="hidden" name="operation" value="addCategory">
 		      		<div class="form-group" >
-		      			<input type="text" class="form-control" name="catTitle" placeholder="Enter Category Title" required />
+		      			<input type="text" class="form-control" name="categoryId" placeholder="Enter Category Id" required />
+		      		</div>
+		      		<div class="form-group" >
+		      			<input type="text" class="form-control" name="categoryTitle" placeholder="Enter Category Title" required />
 		      		</div>
 		      		
 		      		<div class="form-group mt-3">
 		      		
-		      			<textarea style="height : 300px"  class="form-control" placeholder="Enter Category Description" name="catDescription" required ></textarea>
+		      			<textarea style="height : 300px"  class="form-control" placeholder="Enter Category Description" name="categoryDescription" ></textarea>
 		      		
 		      		</div>
 		      		
@@ -193,8 +183,7 @@
 		      </div>
 		      <div class="modal-body">
 		      	
-		      	<form action="ProductOperationServlet" method="post">
-		      		
+		      
 		      		<div class="form-group" >
 		      			<input type="text" class="form-control" name="pName" placeholder="Enter Product Title" required />
 		      		</div>
@@ -216,23 +205,14 @@
 		      		<div class="form-group mt-3" >
 		      			<input type="number" class="form-control" name="pQuantity" placeholder="Enter Product Quantity" required />
 		      		</div>
-		      		<!-- product category -->
-		      		<%
-		      		CategoryDao cdao=new CategoryDao();
-		      		List<Category> list=cdao.getCategories();
-		      		
-		      		%>
 		      		
 		      		<div class="form-group mt-3" >
 		      			
 		      			<select name="catId" class="form-control">
 		      			
-		      			
-		      			<%
-		      			for(Category c:list){
-		      			%>
-		      				<option value="<%= c.getCategoryId()%>"><%= c.getCategoryTitle() %></option>
-		      				<%} %>
+		      				<option value="spices">Spices</option>
+		      				<option value="gravy_mix">Gravy Mix</option>
+		      				<option value="pickles">Pickles</option>
 		      			
 		      			</select>
 		      			
@@ -266,6 +246,7 @@
 		    </div>
 		  </div>
 		</div>
+		
 		
 	</body>
 </html>

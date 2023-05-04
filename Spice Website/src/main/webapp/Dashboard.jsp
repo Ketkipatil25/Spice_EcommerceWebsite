@@ -40,25 +40,7 @@
             </tr>
         </table>
     </header>
-    <nav>
-        <div class="dropdown">
-            <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              Product Categories
-            </a>  
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="spice.jsp">Spices Masala Powder</a></li>
-              <li><a class="dropdown-item" href="gravy.jsp">Gravy Premix</a></li>
-              <li><a class="dropdown-item" href="pickles.jsp">Pickles</a></li>
-            </ul>
-        </div>
-        <a class="home" href="Dashboard.jsp">Home</a>
-        <a class="about" href="#">About us</a>  
-        <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
-        <a class="cart" href="#">My cart</a>
-        <a class="log" href="#"><img src="img/user.png" alt="user"></a>
-        <a class="login" href="Login.jsp">Login</a>
-        <a class="register" href="Register.jsp">Register</a>
-    </nav>
+    <%@include file="components/navbar.jsp" %>
     <main>
         <section class="sec1">
             <img class="img1" src="img/calum-lewis-vA1L1jRTM70-unsplash.jpg" alt="This is an image" width="100%">

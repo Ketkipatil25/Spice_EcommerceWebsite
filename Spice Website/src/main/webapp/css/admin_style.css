@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.modal-header ,.btn {
+	font-family: 'Ysabeau', sans-serif;
+	background-color:#b3151b;
+}
+
+.btn:hover{
+	background-color:#c61117;
+}
+
+.form-group{
+	font-family: 'Ysabeau', sans-serif;
+}
+
+.card{
+    border : 1px solid #b3151b;
+    font-family: 'Cardo', serif;
+    transition: transform 0.5s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    background-color:rgba(237, 237, 237, 0.662);
+    cursor: pointer;
+}
