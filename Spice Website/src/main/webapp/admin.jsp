@@ -1,3 +1,5 @@
+<%@page import="com.Model.Category"%>
+<%@page import="java.util.List"%>
 <%@page import="com.Dao.*"%>
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -18,7 +20,6 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		<title>Admin Panel</title>
 		<%@include file="components/common_css_js.jsp" %>
 		<link rel="stylesheet" href="css/admin_style.css">
-		
 	</head>
 	<body>
 		<header>
@@ -94,7 +95,7 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 					<div class= "card" data-bs-toggle="modal" data-bs-target="#add-category-modal">
 						<div class="card-body text-center">
 						
-							<div class= "container">
+						5	<div class= "container">
 								<img style= "max-width: 125px" class= "image fluid rounded-circle"  alt="add-categories-img" src="img/add_categories.png">
 							</div>
 							
@@ -205,15 +206,25 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      		<div class="form-group mt-3" >
 		      			<input type="number" class="form-control" name="pQuantity" placeholder="Enter Product Quantity" required />
 		      		</div>
+		      		<!-- product category -->
+		      		<%
+		      		CategoryDao cdao=new CategoryDao();
+		      		List<Category> categoryList=cdao.getCategories();
+		      		
+		      		
+		      		%>
 		      		
 		      		<div class="form-group mt-3" >
 		      			
 		      			<select name="catId" class="form-control">
-		      			
-		      				<option value="spices">Spices</option>
-		      				<option value="gravy_mix">Gravy Mix</option>
-		      				<option value="pickles">Pickles</option>
-		      			
+		      			<%
+		      			for(Category c:categoryList){
+		      			%>
+		      			<option value="<%= c.getCategoryId() %> "> 
+		      			<%= c.getCategoryTitle() %>
+		      			 </option>
+		      			<%
+		      			} %>
 		      			</select>
 		      			
 		      		</div>

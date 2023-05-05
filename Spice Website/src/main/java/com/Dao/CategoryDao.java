@@ -41,15 +41,15 @@ public class CategoryDao {
 		List<Category> categorylist=new ArrayList<Category>();
 		try {
 			
-			PreparedStatement ps=con.prepareStatement("SELECT * FROM category_table");
+			PreparedStatement ps=con.prepareStatement("SELECT * FROM category");
 			ResultSet rs=ps.executeQuery();
 		
 			
 			while(rs.next()) {
 				Category c=new Category();
-				c.setCategoryId(rs.getString(0));
-				c.setCategoryTitle(rs.getString(1));
-				c.setCategoryDescription(rs.getString(2));
+				c.setCategoryId(rs.getString(1));
+				c.setCategoryTitle(rs.getString(2));
+				c.setCategoryDescription(rs.getString(3));
 				categorylist.add(c);
 			}
 			System.out.println("Category List: "+categorylist);
@@ -63,4 +63,5 @@ public class CategoryDao {
 		}
 		return categorylist;
 	}
+	
 }
