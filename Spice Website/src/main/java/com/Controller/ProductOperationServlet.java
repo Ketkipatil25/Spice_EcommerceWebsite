@@ -79,11 +79,8 @@ public class ProductOperationServlet extends HttpServlet {
 			int pQuantity=Integer.parseInt(request.getParameter("pQuantity"));
 			String categoryId=request.getParameter("categoryId");
 			
-			
-//			Part part=request.getPart("pPic");
-//			String filename=part.getSubmittedFileName();
-//			System.out.println("filename: "+filename);
-			
+			Part part=request.getPart("pPic");
+//			
 			Product p=new Product();
 			p.setpId(pId);
 			p.setpName(pName);
@@ -91,6 +88,48 @@ public class ProductOperationServlet extends HttpServlet {
 			p.setpPrice(pPrice);
 			p.setpDiscount(pDiscount);
 			p.setpQuantity(pQuantity);
+			p.setpPhoto(part.getSubmittedFileName());
+			
+//			upload 2:
+			
+			String filename=part.getSubmittedFileName();
+			System.out.println("filename: "+filename);
+			
+			
+			
+			
+			try {
+				ProductDao pdao=new ProductDao();
+				pdao.addProduct(p);
+				String path=request.getRealPath("img")+File.separator+"products"+File.separator+part.getSubmittedFileName();
+				System.out.println(path);
+
+				FileOutputStream fos=new FileOutputStream(path);
+				InputStream is=part.getInputStream();
+//				
+				byte[] data=new byte[is.available()];
+				is.read(data);
+				fos.write(data);
+				fos.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 //			get category by id
 			
@@ -98,26 +137,63 @@ public class ProductOperationServlet extends HttpServlet {
 //			String categoryId_product=cdao.getCategoryIdById(categoryId);
 			System.out.println(categoryId.trim().length());
 			p.setCategoryId(categoryId.trim());
-
-			System.out.println(p);
-//			p.setpPhoto(part.getSubmittedFileName());
+//
+//			System.out.println("Starts here");
+//			Part part=request.getPart("pPic");
+//			String filename=part.getSubmittedFileName();
+//			System.out.println("filename: "+filename);
+//			
+//			
+//			System.out.println(p);
+//			
+//			ProductDao pdao=new ProductDao();
+//			pdao.addProduct(p);
 			
-			System.out.println("Starts here");
-			Part file=request.getPart("pPic");
-			String imageFilename=file.getSubmittedFileName();
-			System.out.println("Filename: "+imageFilename);
-			String uploadPath="C:/Users/jdpha/OneDrive/Desktop/DBMS/Spice Website/src/main/webapp/img/products";
-
-		
-			p.setpPhoto(imageFilename);
-
-System.out.println("P:"+p);
-System.out.println("Path"+uploadPath);
-			ProductDao pdao=new ProductDao();
-			pdao.addProduct(p);
-
+//			
+//			try {
+////			uploading code
+//			FileOutputStream fos=new FileOutputStream(path);
+//			InputStream is=part.getInputStream();
+//			
+////			reading data
+//			
+//			byte []data=new byte[is.available()];
+//			is.read(data);
+//			
+////			writing the data
+//			fos.write(data);
+//			fos.close();
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//			
 //			
 			
+			
+//			Part file=request.getPart("pPic");
+//			String imageFilename=file.getSubmittedFileName();
+//			System.out.println("Filename: "+imageFilename);
+//			String uploadPath="C:/Users/jdpha/OneDrive/Desktop/DBMS/Spice Website/src/main/webapp/img"+File.separator+imageFilename;
+//
+//		
+//			p.setpPhoto(imageFilename);
+//
+//			System.out.println("P:"+p);
+//			System.out.println("Path"+uploadPath);
+//			
+//			try {
+//			FileOutputStream fos=new FileOutputStream(uploadPath);
+//			InputStream is=file.getInputStream();
+//			
+//			byte[] data=new byte[is.available()];
+//			is.read(data);
+//			fos.write(data);
+//			fos.close();
+//			}
+//			catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//			
 //			pic upload
 			
 //			String path=request.getServletContext().getRealPath("img")+File.separator+"products"+File.separator+part.getSubmittedFileName();

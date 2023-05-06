@@ -1,6 +1,6 @@
 package com.Model;
 
-import com.Dao.CategoryDao;
+
 
 public class Product {
 	private int pId;

@@ -144,7 +144,7 @@
         <a class="about" href="#">About us</a>  
         <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
         <a class="cart" href="#" data-bs-toggle="modal" data-bs-target="#cart">My cart<span class="cart-items">(0)</span></a>
-        
+        <a class="shop" href="shop.jsp" >Shop</a>
         <%
         if(user1 == null){
         	
