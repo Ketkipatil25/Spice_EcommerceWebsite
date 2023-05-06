@@ -1,6 +1,6 @@
 package com.Model;
 
-import javax.persistence.ManyToOne;
+import com.Dao.CategoryDao;
 
 public class Product {
 	private int pId;
@@ -10,14 +10,14 @@ public class Product {
 	private int pPrice;
 	private int pDiscount;
 	private int pQuantity;
-	@ManyToOne
-	private Category category;
+	
+	private String categoryId;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Product(int pId, String pName, String pDesc, String pPhoto, int pPrice, int pDiscount, int pQuantity,
-			Category category) {
+			String categoryId) {
 		super();
 		this.pId = pId;
 		this.pName = pName;
@@ -26,7 +26,8 @@ public class Product {
 		this.pPrice = pPrice;
 		this.pDiscount = pDiscount;
 		this.pQuantity = pQuantity;
-		this.category = category;
+		this.categoryId = categoryId;
+
 	}
 	public int getpId() {
 		return pId;
@@ -70,17 +71,20 @@ public class Product {
 	public void setpQuantity(int pQuantity) {
 		this.pQuantity = pQuantity;
 	}
-	public Category getCategory() {
-		return category;
+	public String getCategoryId() {
+		return categoryId;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
 	}
 	@Override
 	public String toString() {
 		return "Product [pId=" + pId + ", pName=" + pName + ", pDesc=" + pDesc + ", pPhoto=" + pPhoto + ", pPrice="
-				+ pPrice + ", pDiscount=" + pDiscount + ", pQuantity=" + pQuantity + ", category=" + category + "]";
+				+ pPrice + ", pDiscount=" + pDiscount + ", pQuantity=" + pQuantity + ", categoryId=" + categoryId
+				+ "]";
 	}
+	
+	
 	
 	
 }

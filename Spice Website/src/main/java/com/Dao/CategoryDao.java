@@ -1,3 +1,4 @@
+
 package com.Dao;
 
 import java.sql.Connection;
@@ -36,6 +37,7 @@ public class CategoryDao {
 		}
 		return i;
 	}
+	
 	public List<Category> getCategories(){
 		Connection con=MyConnection.getConnection();
 		List<Category> categorylist=new ArrayList<Category>();
@@ -62,6 +64,30 @@ public class CategoryDao {
 			e.printStackTrace();
 		}
 		return categorylist;
+	}
+	
+	public String getCategoryIdById(String categoryId) {
+		Connection con=MyConnection.getConnection();
+		Category c=new Category();
+		try {
+			PreparedStatement ps=con.prepareStatement("SELECT * FROM category WHERE categoryId=?");
+			ps.setString(1, categoryId);
+			System.out.println("CategoryId:"+categoryId );
+			
+			ResultSet rs=ps.executeQuery();
+			System.out.println(rs.getString(1));
+			while(rs.next()) {
+				c.setCategoryId(categoryId);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return c.getCategoryId();
 	}
 	
 }

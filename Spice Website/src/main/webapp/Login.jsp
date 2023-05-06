@@ -44,8 +44,10 @@
 						  </div>
 						  <div class="mb-3">
 						    <label style="font-size:20px;" for="exampleInputPassword1" class="form-label">Password</label>
-						    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
-						  </div>
+						    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required >
+						    </div>
+						    <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+						   -->
 						  	<a style="text-decoration:none" href="Register.jsp" class="text-center d-block mb-3">If Not Registered Click Here</a>
 						  <div class="container text-center"> 
 						  	<button style="background-color:#b3151b" type="submit" class="btn btn-primary custom-bg border-0 ">Submit</button>

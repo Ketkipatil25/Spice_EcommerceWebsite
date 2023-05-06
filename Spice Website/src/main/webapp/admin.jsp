@@ -95,7 +95,7 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 					<div class= "card" data-bs-toggle="modal" data-bs-target="#add-category-modal">
 						<div class="card-body text-center">
 						
-						5	<div class= "container">
+							<div class= "container">
 								<img style= "max-width: 125px" class= "image fluid rounded-circle"  alt="add-categories-img" src="img/add_categories.png">
 							</div>
 							
@@ -148,7 +148,7 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      		
 		      		<div class="form-group mt-3">
 		      		
-		      			<textarea style="height : 300px"  class="form-control" placeholder="Enter Category Description" name="categoryDescription" ></textarea>
+		      			<textarea style="height : 300px"  class="form-control" placeholder="Enter Category Description" name="categoryDescription" required ></textarea>
 		      		
 		      		</div>
 		      		
@@ -184,6 +184,12 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      </div>
 		      <div class="modal-body">
 		      	
+		      	<form action="ProductOperationServlet" method="post" enctype="multipart/form-data">
+		      	<input type="hidden" name="operation" value="addProduct"/>
+		      
+		      <div class="form-group" >
+		      			<input type="text" class="form-control" name="pId" placeholder="Enter Product Id" required />
+		      		</div>
 		      
 		      		<div class="form-group" >
 		      			<input type="text" class="form-control" name="pName" placeholder="Enter Product Title" required />
@@ -191,7 +197,7 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      		
 		      		<div class="form-group mt-3">
 		      		
-		      			<textarea style="height : 150px"  class="form-control" placeholder="Enter Product Description" name="pDesc" required ></textarea>
+		      			<textarea style="height : 150px"  class="form-control" placeholder="Enter Product Description" name="pDesc" required></textarea>
 		      		
 		      		</div>
 		      		
@@ -200,7 +206,7 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      		</div>
 		      		
 		      		<div class="form-group mt-3" >
-		      			<input type="number" class="form-control" name="pDiscount" placeholder="Enter Product Discount" required />
+		      			<input type="number" class="form-control" name="pDiscount" placeholder="Enter Product Discount" />
 		      		</div>
 		      		
 		      		<div class="form-group mt-3" >
@@ -210,13 +216,11 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      		<%
 		      		CategoryDao cdao=new CategoryDao();
 		      		List<Category> categoryList=cdao.getCategories();
-		      		
-		      		
 		      		%>
 		      		
 		      		<div class="form-group mt-3" >
 		      			
-		      			<select name="catId" class="form-control">
+		      			<select name="categoryId" class="form-control" id="categoryId">
 		      			<%
 		      			for(Category c:categoryList){
 		      			%>
