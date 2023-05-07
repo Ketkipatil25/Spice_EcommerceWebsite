@@ -7,16 +7,22 @@ public class Product {
 	private String pName;
 	private String pDesc;
 	private String pPhoto;
-	private int pPrice;
+	private double pPrice;
 	private int pDiscount;
 	private int pQuantity;
-	
+	private Category c;
+	public Category getC() {
+		return c;
+	}
+	public void setC(Category c) {
+		this.c = c;
+	}
 	private String categoryId;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Product(int pId, String pName, String pDesc, String pPhoto, int pPrice, int pDiscount, int pQuantity,
+	public Product(int pId, String pName, String pDesc, String pPhoto, double pPrice, int pDiscount, int pQuantity,
 			String categoryId) {
 		super();
 		this.pId = pId;
@@ -53,10 +59,10 @@ public class Product {
 	public void setpPhoto(String pPhoto) {
 		this.pPhoto = pPhoto;
 	}
-	public int getpPrice() {
+	public double getpPrice() {
 		return pPrice;
 	}
-	public void setpPrice(int pPrice) {
+	public void setpPrice(double pPrice) {
 		this.pPrice = pPrice;
 	}
 	public int getpDiscount() {
@@ -84,7 +90,11 @@ public class Product {
 				+ "]";
 	}
 	
-	
+	//calculate price after discount
+		public double getpriceAfterApplyingDiscount() {
+			int d = (int)((this.getpDiscount()/100.0)*this.getpPrice());
+			return this.getpPrice() - d;
+		}
 	
 	
 }

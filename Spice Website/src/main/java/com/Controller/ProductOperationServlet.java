@@ -73,7 +73,7 @@ public class ProductOperationServlet extends HttpServlet {
 //			work
 			int pId=Integer.parseInt(request.getParameter("pId"));
 			String pName=request.getParameter("pName");
-			int pPrice=Integer.parseInt(request.getParameter("pPrice"));
+			double pPrice=Double.parseDouble(request.getParameter("pPrice"));
 			String pDesc=request.getParameter("pDesc");
 			int pDiscount=Integer.parseInt(request.getParameter("pDiscount"));
 			int pQuantity=Integer.parseInt(request.getParameter("pQuantity"));
@@ -94,13 +94,16 @@ public class ProductOperationServlet extends HttpServlet {
 			
 			String filename=part.getSubmittedFileName();
 			System.out.println("filename: "+filename);
-			
+			System.out.println(categoryId.trim().length());
+			p.setCategoryId(categoryId.trim());
 			
 			
 			
 			try {
+				
 				ProductDao pdao=new ProductDao();
 				pdao.addProduct(p);
+				@SuppressWarnings("deprecation")
 				String path=request.getRealPath("img")+File.separator+"products"+File.separator+part.getSubmittedFileName();
 				System.out.println(path);
 
@@ -135,8 +138,7 @@ public class ProductOperationServlet extends HttpServlet {
 			
 //			CategoryDao cdao=new CategoryDao();
 //			String categoryId_product=cdao.getCategoryIdById(categoryId);
-			System.out.println(categoryId.trim().length());
-			p.setCategoryId(categoryId.trim());
+			
 //
 //			System.out.println("Starts here");
 //			Part part=request.getPart("pPic");

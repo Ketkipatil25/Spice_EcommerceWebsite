@@ -10,8 +10,24 @@
 Map<String,Double> usercount=HelperDao.getCount_User();
 Map<String,Double> categorycount=HelperDao.getCount_Category();
 %>
+<%
+	
+	User user=(User)session.getAttribute("User");
+	if(user==null){
+		session.setAttribute("message","You are not logged in !! Login first.");
+		response.sendRedirect("Login.jsp");
+		return;
+	}
+	else{
+		if(user.getUserType().equals("User"))
+		{
+			session.setAttribute("message","You are not admin !! Do not access this page.");
+			response.sendRedirect("Login.jsp");
+			return;
+		}
+		else{
 
-
+%> 
 
 <!DOCTYPE html>
 <html>
@@ -214,7 +230,7 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		      		</div>
 		      		<!-- product category -->
 		      		<%
-		      		CategoryDao cdao=new CategoryDao();
+		      		
 		      		List<Category> categoryList=cdao.getCategories();
 		      		%>
 		      		
@@ -262,6 +278,16 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 		  </div>
 		</div>
 		
-		
+		<%@include file="components/common_modal.jsp" %>
 	</body>
 </html>
+
+
+
+
+<% 		
+
+		}
+	}
+%>
+

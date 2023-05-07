@@ -43,35 +43,24 @@ public class LoginController extends HttpServlet {
 		LoginDao ld=new LoginDao();
 		System.out.println("password:"+password);
 //		-------------->check from here???????
-		User u1=ld.validateUser(u);
+		User User=ld.validateUser(u);
 
 		HttpSession session=request.getSession();
-//		session.setAttribute("username", username);
+		session.setAttribute("User", User);
 		
-		if(u1!=null) {
+		if(User!=null) {
 			System.out.println("Valid User");
 			
 //			login
-			session.setAttribute("User", u1);
-//			User user=(User)session.getAttribute("username");
 			
-//			if(username.getUserType().equals("admin")) {
-////				admin :admin.jsp
-//				response.sendRedirect("admin.jsp");
-//			}
-//			
-//			else if(username.getUserType().equals("normal")) {
-////				normal user:normal.jsp
-//				response.sendRedirect("normal.jsp");
-//			}
-			
-			if(u1.getUserType().equals("Admin")) {
+
+			if(User.getUserType().equals("Admin")) {
 //				admin :admin.jsp
 				response.sendRedirect("admin.jsp");
 				System.out.println("Admin Logged in ->");
 			}
 			
-			else if(u1.getUserType().equals("User")) {
+			else if(User.getUserType().equals("User")) {
 //				normal user:normal.jsp
 				response.sendRedirect("normal.jsp");
 				System.out.println("User Logged in ->");
@@ -82,7 +71,7 @@ public class LoginController extends HttpServlet {
 		}else {
 			System.out.println("Invalid User");
 			System.out.println("");
-			response.sendRedirect("Register.jsp");
+			response.sendRedirect("Login.jsp");
 		}
 	}
 

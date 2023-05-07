@@ -18,7 +18,7 @@ public class ProductDao {
 			PreparedStatement ps=con.prepareStatement("INSERT INTO product(pId,pName,pPrice,pDesc,pDiscount,pQuantity,pPhoto,categoryId) VALUES(?,?,?,?,?,?,?,?)");
 			ps.setInt(1, p.getpId());
 			ps.setString(2, p.getpName());
-			ps.setInt(3, p.getpPrice());
+			ps.setDouble(3, p.getpPrice());
 			ps.setString(4, p.getpDesc());
 			ps.setInt(5, p.getpDiscount());
 			ps.setInt(6, p.getpQuantity());
@@ -51,7 +51,7 @@ public class ProductDao {
 				Product p=new Product();
 				p.setpId(rs.getInt(1));
 				p.setpName(rs.getString(2));
-				p.setpPrice(rs.getInt(3));
+				p.setpPrice(rs.getDouble(3));
 				p.setpDesc(rs.getString(4));
 				p.setpDiscount(rs.getInt(5));
 				p.setpQuantity(rs.getInt(6));
@@ -71,4 +71,40 @@ public class ProductDao {
 		}
 		return plist;
 	}
+public List<Product> getAllProductsById(String cid){
+		
+		Connection con=MyConnection.getConnection();
+		List<Product> productbyidlist=new ArrayList<Product>();
+		try {
+			
+			PreparedStatement ps=con.prepareStatement("SELECT * FROM product where categoryId = ?");
+			ps.setString(1,cid);
+			ResultSet rs=ps.executeQuery();
+		
+			
+			while(rs.next()) {
+				Product p=new Product();
+				
+				p.setpId(rs.getInt(1));
+				p.setpName(rs.getString(2));
+				p.setpPrice(rs.getDouble(3));
+				p.setpDesc(rs.getString(4));
+				p.setpDiscount(rs.getInt(5));
+				p.setpQuantity(rs.getInt(6));
+				p.setpPhoto(rs.getString(7));
+				p.setCategoryId(rs.getString(8));
+				productbyidlist.add(p);
+			}
+			System.out.println("Product List: "+productbyidlist);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return productbyidlist;
+	}
+
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.Model.User" %>
+<%@page import="com.Model.*" %>
+<%@page import="com.Dao.*" %>
+<%@page import="java.util.List" %>
  
 
 
@@ -96,7 +98,7 @@
 	}
 	
 	.log{
-	    padding: 20px 5px 20px 680px;
+	    padding: 20px 5px 20px 500px;
 	}
 	
 	.login:hover , .register:hover{
@@ -131,25 +133,39 @@
 </style>
 <nav>
         <div class="dropdown">
+        
+        	<%
+				CategoryDao cdao = new CategoryDao();
+				List<Category> clist = cdao.getCategories(); 
+			
+			%>
             <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               Product Categories
-            </a>  
+            </a> 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="spice.jsp">Spices Masala Powder</a></li>
-              <li><a class="dropdown-item" href="gravy.jsp">Gravy Premix</a></li>
-              <li><a class="dropdown-item" href="pickles.jsp">Pickles</a></li>
+            
+            <% 
+            	for(Category c:clist){
+            %>
+             
+              <li><a class="dropdown-item"  href="<%= c.getCategoryTitle()%>.jsp"><%= c.getCategoryTitle() %></a></li>
+            
+            <%
+            	}
+            %>
             </ul>
         </div>
         <a class="home" href="Dashboard.jsp">Home</a>
-        <a class="about" href="#">About us</a>  
+        <a class="about" href="#">About us</a>
+        <a class="about" href="allproducts.jsp">All Products</a>
         <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
         <a class="cart" href="#" data-bs-toggle="modal" data-bs-target="#cart">My cart<span class="cart-items">(0)</span></a>
-        <a class="shop" href="shop.jsp" >Shop</a>
+        
         <%
-        if(user1 == null){
+       	if(user1 == null){
         	
         
- 			%>   
+ 		%>   
  			<a class="log" href="Login.jsp"><img src="img/user.png" alt="user"></a>
 	        <a class="login" href="Login.jsp">Login</a>
 	        <a class="register" href="Register.jsp">Register</a>

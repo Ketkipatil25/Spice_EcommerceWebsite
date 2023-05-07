@@ -66,7 +66,7 @@ public class CategoryDao {
 		return categorylist;
 	}
 	
-	public String getCategoryIdById(String categoryId) {
+	public String getCategorybyId(String categoryId) {
 		Connection con=MyConnection.getConnection();
 		Category c=new Category();
 		try {
@@ -77,7 +77,9 @@ public class CategoryDao {
 			ResultSet rs=ps.executeQuery();
 			System.out.println(rs.getString(1));
 			while(rs.next()) {
-				c.setCategoryId(categoryId);
+				c.setCategoryId(rs.getString(1));
+				c.setCategoryTitle(rs.getString(2));
+				c.setCategoryDescription(rs.getString(3));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
