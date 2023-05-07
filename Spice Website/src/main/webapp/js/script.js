@@ -127,9 +127,9 @@ function deleteItem(pid){
 	 
 	 let newcart =  cart.filter((item) => item.productId != pid);
 	 
-	 localStorage.setItem('cart' ,JSON.stringify(newcart))
+	 localStorage.setItem('cart' ,JSON.stringify(newcart));
 	 
-	 updatecart()
+	 updatecart();
 	 
 	 showToast("Item is removed from cart.")
 }

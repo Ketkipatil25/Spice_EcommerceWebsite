@@ -120,7 +120,7 @@
 						
 							<div class="container text-center">
 							
-								<img src="img/products/<%= p.getpPhoto() %>" style="max-height: 300px; max-width:100%;width:auto;" class="card-img-top mt-3" alt="Spice-img">
+								<img src="img/products/<%= p.getpPhoto().trim() %>" style="max-height: 300px; max-width:100%;width:auto;" class="card-img-top mt-3" alt="Spice-img">
 							
 							</div>
 						
