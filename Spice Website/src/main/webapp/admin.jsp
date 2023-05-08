@@ -9,6 +9,7 @@
 <%
 Map<String,Double> usercount=HelperDao.getCount_User();
 Map<String,Double> categorycount=HelperDao.getCount_Category();
+Map<String,Double> productcount=HelperDao.getCount_Product();
 %>
 <%
 	
@@ -96,8 +97,11 @@ Map<String,Double> categorycount=HelperDao.getCount_Category();
 								<img style= "max-width: 125px" class= "image fluid rounded-circle"  alt="product-img" src="img/Product.png">
 							</div>
 							
-							<h2>3577</h2>
-							<h1 class = "text-uppercase text-muted">Products</h1>
+							<h2><%= productcount.get("productcount") %></h2>
+							<a style="text-decoration:none;" href="viewProducts.jsp"   >
+							<h1 class="text-uppercase text-muted">Products</h1>
+							</a>
+							
 						</div>
 					</div>
 				</div>

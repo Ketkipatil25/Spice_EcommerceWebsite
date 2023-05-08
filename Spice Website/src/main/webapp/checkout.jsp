@@ -82,8 +82,8 @@
 								
 								<div class="container text-center">
 								
-									<button style="background-color:#b3151b;" class="btn text-white">Order Now</button>
-									<button style="background-color:#b3151b" class="btn text-white">Continue Shopping</button>
+									<button style="background-color:#b3151b;" class="btn text-white" href="#">Order Now</button>
+									<button style="background-color:#b3151b" class="btn text-white" href="allproducts.jsp">Continue Shopping</button>
 								
 								</div>
 							

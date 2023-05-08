@@ -9,7 +9,9 @@
       <div class="modal-body">
         
         <div class="cart-body">
-        
+        	
+        	<% //loop %>
+        	
         </div>
         
       </div>

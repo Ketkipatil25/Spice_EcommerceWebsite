@@ -262,3 +262,7 @@ footer a {
 	background: #e2e2e2;
 	cursor: pointer;
 }
+
+.container{
+	padding: 20px;
+}

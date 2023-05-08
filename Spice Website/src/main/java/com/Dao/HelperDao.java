@@ -55,6 +55,29 @@ public class HelperDao {
 		
 	}
 //	product helper
+	public static Map<String, Double> getCount_Product() {
+		Connection con=MyConnection.getConnection();
+		Map<String, Double> map=new HashMap<>();
+		try {
+			
+			PreparedStatement ps=con.prepareStatement("SELECT COUNT(*) FROM product");
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			double productCount=rs.getDouble(1);
+			System.out.println("Product Count:"+productCount);
+			map.put("productcount", productCount);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return map;
+		
+	}
 	
 	}
 
