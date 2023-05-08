@@ -22,12 +22,13 @@ Map<String,Double> productcount=HelperDao.getCount_Product();
 	else{
 		if(user.getUserType().equals("User"))
 		{
-			session.setAttribute("message","You are not admin !! Do not access this page.");
+			System.out.println("U are User ");
+			session.setAttribute("message2","You are not admin !! Do not access this page.");
 			response.sendRedirect("Login.jsp");
 			return;
 		}
 		else{
-
+			session.setAttribute("message","Welcome! "+user.getUsername());
 %> 
 
 <!DOCTYPE html>

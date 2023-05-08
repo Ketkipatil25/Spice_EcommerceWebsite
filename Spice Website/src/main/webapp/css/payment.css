@@ -1,0 +1,30 @@
+body{
+    background-color: #f1a793;
+}
+.circle {
+  padding: 75px;
+  margin: 310px auto;
+  background-color: #b3151b;
+  width: 40%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 36px;
+  display: inline-block;
+  border-radius: 50%;
+  color: #fff;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1;
+  color: #fff;
+  padding: 10px;
+  margin :0px;
+}

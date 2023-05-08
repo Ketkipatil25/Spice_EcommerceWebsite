@@ -156,7 +156,7 @@
             </ul>
         </div>
         <a class="home" href="Dashboard.jsp">Home</a>
-        <a class="about" href="#">About us</a>
+        <a class="about" href="aboutus.jsp">About us</a>
         <a class="about" href="allproducts.jsp">All Products</a>
         <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
         <a class="cart" href="#" data-bs-toggle="modal" data-bs-target="#cart">My cart<span class="cart-items">(0)</span></a>
