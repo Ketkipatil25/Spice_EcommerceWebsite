@@ -62,7 +62,7 @@
   				</div>
   				<div class="form-group">
     			<label for="password">Password</label>
-    			<input type="password" class="form-control" id="password" placeholder="password" name="password" required>
+    			<input type="password" class="form-control" id="password" placeholder="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
   				</div>
   				<div class="form-check">
     			<input type="checkbox" class="form-check-input" id="exampleCheck1">

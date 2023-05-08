@@ -15,7 +15,8 @@ Map<String,Double> productcount=HelperDao.getCount_Product();
 	
 	User user=(User)session.getAttribute("User");
 	if(user==null){
-		session.setAttribute("message","You are not logged in !! Login first.");
+		System.out.println("dont ");
+		session.setAttribute("message","Please Login");
 		response.sendRedirect("Login.jsp");
 		return;
 	}
@@ -28,7 +29,7 @@ Map<String,Double> productcount=HelperDao.getCount_Product();
 			return;
 		}
 		else{
-			session.setAttribute("message","Welcome! "+user.getUsername());
+			
 %> 
 
 <!DOCTYPE html>
@@ -208,9 +209,9 @@ Map<String,Double> productcount=HelperDao.getCount_Product();
 		      	<form action="ProductOperationServlet" method="post" enctype="multipart/form-data">
 		      	<input type="hidden" name="operation" value="addProduct"/>
 		      
-		      <div class="form-group" >
+		     <div class="form-group" >
 		      			<input type="text" class="form-control" name="pId" placeholder="Enter Product Id" required />
-		      		</div>
+		      		</div> 
 		      
 		      		<div class="form-group" >
 		      			<input type="text" class="form-control" name="pName" placeholder="Enter Product Title" required />

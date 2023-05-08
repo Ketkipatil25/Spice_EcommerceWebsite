@@ -31,11 +31,13 @@ public class UpdateProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String pName = request.getParameter("pName");
+		
+		String pName = request.getParameter("pName").trim();
 		double pPrice=Double.parseDouble(request.getParameter("pPrice"));
 		String pDesc=request.getParameter("pDesc");
 		int pDiscount=Integer.parseInt(request.getParameter("pDiscount"));
 		int pQuantity=Integer.parseInt(request.getParameter("pQuantity"));
+		String pPhoto=request.getParameter("pPhoto");
 		String categoryId=request.getParameter("categoryId");
 		
 		Product p=new Product();
@@ -44,6 +46,7 @@ public class UpdateProduct extends HttpServlet {
 		p.setpDesc(pDesc);
 		p.setpDiscount(pDiscount);
 		p.setpQuantity(pQuantity);
+		p.setpPhoto(pPhoto);
 		p.setCategoryId(categoryId);
 		
 		ProductDao pdao=new ProductDao();

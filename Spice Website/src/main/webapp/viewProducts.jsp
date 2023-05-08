@@ -62,6 +62,8 @@
 									<th scope="col">Pdiscount</th>
 									<th scope="col">PQuantity</th>
 									<th scope="col">PDescription</th>
+									<th scope="col">P Category id</th>
+									<th scope="col">P Photo</th>
 									<th scope="col">Action</th>
 								</tr>
 							</thead>
@@ -78,6 +80,8 @@
 									<td><%=p.getpDiscount()%></td>
 									<td><%=p.getpQuantity()%></td>
 									<td><%=p.getpDesc()%></td>
+									<td><%=p.getCategoryId() %></td>
+									<td><%=p.getpPhoto() %></td>
 									<td><a href="editProduct.jsp?pId=<%=p.getpId()%>" class="btn btn-sm btn-primary">Edit</a> 
 										
 										<%-- <a href="/deleteProduct?id=<%=p.getpId()%>" class="btn btn-sm btn-danger">Delete</a></td>  --%>

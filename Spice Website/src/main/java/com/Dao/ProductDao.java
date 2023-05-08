@@ -18,13 +18,13 @@ public class ProductDao {
 		try {
 			PreparedStatement ps=con.prepareStatement("INSERT INTO product(pId,pName,pPrice,pDesc,pDiscount,pQuantity,pPhoto,categoryId) VALUES(?,?,?,?,?,?,?,?)");
 			ps.setInt(1, p.getpId());
-			ps.setString(2, p.getpName());
+			ps.setString(2, p.getpName().trim());
 			ps.setDouble(3, p.getpPrice());
 			ps.setString(4, p.getpDesc());
 			ps.setInt(5, p.getpDiscount());
 			ps.setInt(6, p.getpQuantity());
 			ps.setString(7, p.getpPhoto());
-			ps.setString(8, p.getCategoryId());
+			ps.setString(8, p.getCategoryId().trim());
 			i=ps.executeUpdate();
 			if(i>0) {
 				System.out.println("Product Succesfully Added!");
@@ -57,7 +57,7 @@ public class ProductDao {
 				p.setpDiscount(rs.getInt(5));
 				p.setpQuantity(rs.getInt(6));
 				p.setpPhoto(rs.getString(7));
-				p.setCategoryId(rs.getString(8));
+				p.setCategoryId(rs.getString(8).trim());
 				plist.add(p);
 			}
 			System.out.println("Product List: "+plist);
@@ -93,7 +93,7 @@ public List<Product> getAllProductsById(String cid){
 				p.setpDiscount(rs.getInt(5));
 				p.setpQuantity(rs.getInt(6));
 				p.setpPhoto(rs.getString(7));
-				p.setCategoryId(rs.getString(8));
+				p.setCategoryId(rs.getString(8).trim());
 				productbyidlist.add(p);
 			}
 			System.out.println("Product List: "+productbyidlist);
@@ -109,24 +109,26 @@ public List<Product> getAllProductsById(String cid){
 	}
 public Product getProductbyId(int pId) {
 	Connection con=MyConnection.getConnection();
-	Product p=new Product();
+	Product p=null;
 	try {
-		PreparedStatement ps=con.prepareStatement("SELECT * FROM product WHERE pI=?");
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM product WHERE pId=?");
 		ps.setInt(1, pId);
-		System.out.println("Product id:" +pId);
 		
 		ResultSet rs=ps.executeQuery();
-		System.out.println(rs.getString(1));
+		
+		
 		while(rs.next()) {
+			p=new Product();
 			p.setpId(rs.getInt(1));
 			p.setpName(rs.getString(2));
 			p.setpPrice(rs.getDouble(3));
 			p.setpDesc(rs.getString(4));
 			p.setpDiscount(rs.getInt(5));
 			p.setpQuantity(rs.getInt(6));
-
-			
+			p.setpPhoto(rs.getString(7));
+			p.setCategoryId(rs.getString(8).trim());
 		}
+		System.out.println("result set:" + p.toString());
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -141,14 +143,18 @@ public int updateProduct(Product p) {
 	Connection con=MyConnection.getConnection();
 	int i=0;
 	try {
-		String sql = "update product set pName=?,pPrice=?,pDesc=?,pDiscount=?,pQuantity=?,categoryId=? where pId=?";
+		String sql = "update product set pName=?,pPrice=?,pDesc=?,pDiscount=?,pQuantity=?,pPhoto=?,categoryId=? where pId=?";
 		PreparedStatement ps = con.prepareStatement(sql);
+		
 		ps.setString(1, p.getpName());
 		ps.setDouble(2, p.getpPrice());
 		ps.setString(3, p.getpDesc());
 		ps.setInt(4, p.getpDiscount());
 		ps.setInt(5, p.getpQuantity());
-		ps.setString(6, p.getCategoryId());
+		ps.setString(6, p.getpPhoto());
+		ps.setString(7, p.getCategoryId().trim());
+		ps.setInt(8, p.getpId());
+		System.out.println("getting from dao"+p.getpId());
 		i= ps.executeUpdate();
 		if(i>0) {
 			System.out.println("Product Updated Succesfully!");
@@ -167,12 +173,12 @@ public int updateProduct(Product p) {
 	return i;
 }
 
-public int deleteProduct(Product p) {
+public int deleteProduct(int pId) {
 	Connection con=MyConnection.getConnection();
 	int i=0;
 	try {
 		PreparedStatement ps = con.prepareStatement("delete from product where pId=?");
-		ps.setInt(1, p.getpId());
+		ps.setInt(1, pId);
 
 		i = ps.executeUpdate();
 		if(i>0) {

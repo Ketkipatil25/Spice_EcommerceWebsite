@@ -44,7 +44,7 @@
 						  </div>
 						  <div class="mb-3">
 						    <label style="font-size:20px;" for="exampleInputPassword1" class="form-label">Password</label>
-						    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required >
+						    <input type="password" class="form-control" id="exampleInputPassword1" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required >
 						    </div>
 						    <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 						   -->

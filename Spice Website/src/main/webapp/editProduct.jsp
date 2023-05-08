@@ -39,46 +39,46 @@
 </head>
 <body>
 
-	<%
 	
-	int pId = Integer.parseInt(request.getParameter("pId")); 
-	ProductDao pdao = new ProductDao();
-	Product  p= pdao.getProductbyId(pId);
-	
-	%>
 
 	<%@include file="components/navbar.jsp"%>
 	<div class="container">
 		<div class="card">
 		
 			<div class = "card-body">
-			
+			<%
+	
+	int pId = Integer.parseInt(request.getParameter("pId")); 
+	ProductDao pdao = new ProductDao();
+	Product  p1= pdao.getProductbyId(pId);
+	System.out.println("p1:"+p1);	
+	%>
 				<form action="UpdateProduct" method="post" enctype="multipart/form-data">
-		      <div class="form-group" >
-		      			<input type="text" class="form-control" name="pId" value="<%= p.getpId()%>" required />
-		      		</div>
+		     <div><input type="text" name="pId" value="<%=p1.getpId()%>">
+		     </div>
 		      
 		      		<div class="form-group mt-3" >
-		      			<input type="text" class="form-control" name="pName" value="<%= p.getpName()%>" required />
+		      			<input type="text" class="form-control" name="pName" value="<%= p1.getpName()%>" required />
 		      		</div>
 		      		
 		      		<div class="form-group mt-3">
 		      		
-		      			<textarea style="height : 150px"  class="form-control" placeholder="Enter Product Description" name="pDesc" required></textarea>
+		      			<textarea style="height : 150px"  class="form-control" placeholder="Enter Product Description" name="pDesc"  required></textarea>
 		      		
 		      		</div>
 		      		
 		      		<div class="form-group mt-3" >
-		      			<input type="number" class="form-control" name="pPrice" placeholder="Enter Product Price" required />
+		      			<input type="number" class="form-control" name="pPrice" placeholder="Enter Product Price" value="<%= p1.getpPrice()%>" required />
 		      		</div>
 		      		
 		      		<div class="form-group mt-3" >
-		      			<input type="number" class="form-control" name="pDiscount" placeholder="Enter Product Discount" />
+		      			<input type="number" class="form-control" name="pDiscount" placeholder="Enter Product Discount"  value="<%= p1.getpDiscount()%>"/>
 		      		</div>
 		      		
 		      		<div class="form-group mt-3" >
-		      			<input type="number" class="form-control" name="pQuantity" placeholder="Enter Product Quantity" required />
+		      			<input type="number" class="form-control" name="pQuantity" placeholder="Enter Product Quantity" value="<%= p1.getpQuantity()%>" required />
 		      		</div>
+		      		
 		      		<!-- product category -->
 		      		<%
 		      		
@@ -87,7 +87,7 @@
 		      		
 		      		<div class="form-group mt-3" >
 		      			
-		      			<select name="categoryId" class="form-control" id="categoryId">
+		      			<select name="categoryId" class="form-control" id="categoryId" >
 		      			<%
 		      			for(Category c:categoryList){
 		      			%>
@@ -105,15 +105,14 @@
 		      		
 		      			<label for="pPic">Select Picture of Product</label>
 		      			<br>	
-		      			<input type="file" id="pPic" name="pPic" required />
+		      			<input type="file" id="pPic" name="pPic" value="<%=p1.getpPhoto() %>"  required />
 		      			
 		      		</div>
-		      		
-		      		
+		      	
 		      		
 		      		<div class="container text-center mt-3">
 		      		
-		      			<button class="btn text-white">Update Product</button>
+		      			<button class="btn btn-primary text-white">Update Product</button>
 		      		
 		      		</div>
 		      		
