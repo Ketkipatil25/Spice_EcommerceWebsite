@@ -1,3 +1,7 @@
+<%@page import="com.Model.*" %>
+<%@page import="com.Dao.*" %>
+<%@page import="java.util.List" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -28,9 +32,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/spice_css.css">
+    <%@include file="/components/common_css_js.jsp"%>
 </head>
 <body>
     <header>
@@ -41,121 +48,86 @@
             </tr>
         </table>
     </header>
-    <nav>
-        <a class="home" href="Dashboard.jsp">Home</a>
-        <a class="about" href="#">About us</a>  
-        <a class="bag" href="#"><img src="img/shopping-bag.png" alt="cart"></a>
-        <a class="cart" href="#">My cart</a>
-        <a class="log" href="#"><img src="img/user.png" alt="user"></a>
-        <a class="login" href="#">Login</a>
-        <a class="login" href="#">Register</a>
-    </nav>
+    <%@include file="components/navbar.jsp" %>
     <main>
-        <div class="container1">
+        <div class="container">
             <h1>Spice and Masala</h1>
-            <table>
-                <tr>
-                    <td class="data t1">
-                        <img src="img/Ogm.jpg">
-                        <h4>Onion garlic masala</h4>
-                        <h5>
-                        <%@include file="/components/star.jsp" %>
-                        </h5>
-                        <!-- <a href="#">ADD TO CART</a> -->
-                        <p>Price: Rs.500 per 1kg</p>
-                    </td>
-                    <td class="data t1">
-                        <img src="img/garam masala - india's most famo.jpg" alt="">
-                        <h4>Garam masala</h4>
-                        <h5>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i></h5>
-                        <p>Price : Rs.120 per 100g</p>
-                    </td>
-                    <td class="data t1">
-                        <img src="img/Indian Khana_ Homemade Kitchen K.jpg" alt="">
-                        <h4>Kitchen King masala</h4>
-                        <h5><i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-empty"></i></h5>
-                        <p>Price : Rs.75 per 100g</p>
-                    </td>
-                </tr>
-                <br>
-                <tr>
-                    <td class="data">
-                        <img src="img/Biryani Masala Powder Recipe - S.jpg">
-                        <h4>Biryani Masala</h4>
-                        <h5><i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-empty"></i></h5>
-                        <p>Price: Rs.128 per 100g</p>
-                    </td>
-                    <td class="data">
-                        <img src="img/Sambar Powder Recipe - Sambar Ma.jpg" alt="">
-                        <h4>Sambar Masala</h4>
-                        <h5>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i></h5>
-                        <p>Price: Rs.65 per 100g</p>
-                    </td>
-                    <td class="data">
-                        <img src="img/Malvani Masala recipe in Marathi.jpg" alt="">
-                        <h4>Malvani Masala</h4>
-                        <h5><i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i></h5>
-                        <p>Price: Rs.75 per 100g</p>
-                    </td>
-                </tr>
-                <br>
-                <tr>
-                    <td class="data">
-                        <img src="img/Masala Chaas _ Spiced Buttermilk (1).jpg">
-                        <h4>Buttermilk Masala</h4>
-                        <h5>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i></h5>
-                        <p>Price: Rs.68 per 100g</p>
-                    </td>
-                    <td class="data">
-                        <img src="img/Kolhapuri Usal_Misal Recipe with.jpg" alt="">
-                        <h4>Misal Masala</h4>
-                        <h5><i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-empty"></i></h5>
-                        <p>Price: Rs.70 per 100g</p>
-                    </td>
-                    <td class="data">
-                        <img src="img/Turmeric Exporters in India _ Tu.jpg" alt="">
-                        <h4>Turmeric powder</h4>
-                        <h5><i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i></h5>
-                        <p>Price: Rs.320 per 1kg</p>
-                    </td>
-                </tr>
-            </table>
+            <div class="row">
+            
+            <%
+		
+		
+		 	String cid = request.getParameter("category"); 
+		
+			ProductDao pdao = new ProductDao();
+			List<Product> plist = null;
+			
+			if(cid == null){
+				plist = pdao.getAllProductsById(cid);
+			}
+			
+			else{ 
+				plist = pdao.getAllProductsById(cid);
+				
+			}  
+			
+		
+		%>
+		
+		
+		
+			<div class="col-md-4">
+			
+			
+						
+					<!-- product card -->
+					<div class="card-columns">
+					
+						<%
+						
+						for(Product p:plist){
+						
+						%>	
+						
+						<div class="card product-card">
+						
+							<div class="container text-center">
+							
+								<img src="img/products/<%= p.getpPhoto().trim() %>" style="max-height: 300px; max-width:100%;width:auto;" class="card-img-top mt-3" alt="Spice-img">
+							
+							</div>
+						
+							<div class="card-body">
+							
+								<h5 class="card-title"><%= p.getpName() %></h5>
+								<p class="card-text"><%= Helper.get10words(p.getpDesc()) %></p>
+							
+							</div>
+							
+							<div class="card-footer text-center">
+								<button type="button" class="btn btn-outline-primary"> &#8377; <%= p.getpriceAfterApplyingDiscount() %>/- <span class="text-secondary discount-label m-3"> <del>&#8377; <%= p.getpPrice() %> </del><span class="m-3"><%= p.getpDiscount() %> % off </span></span></button>
+								<br>
+								<button class="btn btn-outline-danger mt-3" onclick="add_to_cart(<%= p.getpId()%>,'<%= p.getpName()%>',<%= p.getpriceAfterApplyingDiscount()%>)">Add to Cart</button>
+							</div>
+						
+						</div>
+						
+							
+						
+						<%
+						
+						}
+						
+						%>
+					
+					</div>
+				
+			
+		
+		</div>
+            
+            </div>
         </div>
     </main>
 </body>
-</html>
+</html> 

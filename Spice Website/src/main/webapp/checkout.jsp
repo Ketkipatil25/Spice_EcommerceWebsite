@@ -82,8 +82,8 @@
 								
 								<div class="container text-center">
 								
-									<button style="background-color:#b3151b;" class="btn text-white" ><a href="payment.jsp" class="text-uppercase text-muted " style="text-decoration: none;">Order Now</a></button>
-									<button style="background-color:#b3151b" class="btn text-white" ><a href="allproducts.jsp" class="text-uppercase text-muted " style="text-decoration: none;">Continue Shopping</a></button>
+									<button style="background-color:#b3151b;" class="btn text-white" ><a href="payment.jsp" class="text-uppercase text-muted text-white" style="text-decoration: none;">Order Now</a></button>
+									<button style="background-color:#b3151b" class="btn text-white" ><a href="allproducts.jsp" class="text-uppercase text-muted text-white" style="text-decoration: none;">Continue Shopping</a></button>
 								
 								</div>
 							

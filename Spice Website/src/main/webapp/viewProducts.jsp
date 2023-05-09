@@ -31,7 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style_dash.css">
+   <link rel="stylesheet" href="css/style_dash.css">
     <%@include file="/components/common_css_js.jsp"%>
     
 <style>
@@ -41,6 +41,14 @@
 </style>
 </head>
 <body>
+	<header>
+        <table>
+            <tr>
+                <th><img src="img/5 (1) (1).png" alt=""></th>
+                <th><h1>Swayambhulaxmi Spice</h1></th>
+            </tr>
+        </table>
+    </header>
 	<%@include file="components/navbar.jsp"%>
 	<div class="container-fluid p-3">
 		<div class="row">
@@ -62,8 +70,6 @@
 									<th scope="col">Pdiscount</th>
 									<th scope="col">PQuantity</th>
 									<th scope="col">PDescription</th>
-									<th scope="col">P Category id</th>
-									<th scope="col">P Photo</th>
 									<th scope="col">Action</th>
 								</tr>
 							</thead>
@@ -80,11 +86,11 @@
 									<td><%=p.getpDiscount()%></td>
 									<td><%=p.getpQuantity()%></td>
 									<td><%=p.getpDesc()%></td>
-									<td><%=p.getCategoryId() %></td>
-									<td><%=p.getpPhoto() %></td>
-									<td><a href="editProduct.jsp?pId=<%=p.getpId()%>" class="btn btn-sm btn-primary">Edit</a> 
-										
-										<%-- <a href="/deleteProduct?id=<%=p.getpId()%>" class="btn btn-sm btn-danger">Delete</a></td>  --%>
+									<td>
+									
+										<%-- <a href="editProduct.jsp?id=<%=p.getpId()%>"><button class="btn btn-md btn-primary">Edit</button></a> 
+										 --%>
+										<a href="deleteProductServlet?pId=<%=p.getpId()%>"><button class="btn btn-md btn-danger">Delete</button></a></td>
 								</tr>
 								<%
 								}

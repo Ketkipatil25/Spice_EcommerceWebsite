@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.Model.User;
 
@@ -89,5 +91,32 @@ public User validateUser(User u) {
 		e.printStackTrace();
 	}
 	return u1;
+}
+public List<User> getUsers(){
+	Connection con=MyConnection.getConnection();
+	List<User> ulist=new ArrayList<>();
+	try {
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM user");
+		ResultSet rs=ps.executeQuery();
+		
+		while(rs.next()) {
+			User u=new User();
+			u.setUsername(rs.getString(1));
+			u.setName(rs.getString(2));
+			u.setEmail(rs.getString(3));
+			u.setPassword(rs.getString(4));
+			ulist.add(u);
+		}
+		System.out.println("User List: "+ulist);
+		
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}
+	try{
+		con.close();
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return ulist;
 }
 }

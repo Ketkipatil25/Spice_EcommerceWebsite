@@ -6,21 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.Dao.ProductDao;
-import com.Model.Product;
+import com.Dao.*;
 
 /**
- * Servlet implementation class UpdateProduct
+ * Servlet implementation class deleteProductServlet
  */
-@WebServlet("/UpdateProduct")
-public class UpdateProduct extends HttpServlet {
+@WebServlet("/deleteProductServlet")
+public class deleteProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateProduct() {
+    public deleteProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,34 +31,24 @@ public class UpdateProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		int i=Integer.parseInt(request.getParameter("pId"));
-		String pName = request.getParameter("pName").trim();
-		double pPrice=Double.parseDouble(request.getParameter("pPrice"));
-		String pDesc=request.getParameter("pDesc");
-		int pDiscount=Integer.parseInt(request.getParameter("pDiscount"));
-		int pQuantity=Integer.parseInt(request.getParameter("pQuantity"));
-		String pPhoto=request.getParameter("pPhoto");
-		String categoryId=request.getParameter("categoryId");
+int pId = Integer.parseInt(request.getParameter("pId"));
 		
-		Product p=new Product();
-		p.setpName(pName);
-		p.setpPrice(pPrice);
-		p.setpDesc(pDesc);
-		p.setpDiscount(pDiscount);
-		p.setpQuantity(pQuantity);
-		p.setpPhoto(pPhoto);
-		p.setCategoryId(categoryId);
+		ProductDao pdao = new ProductDao();
 		
-		ProductDao pdao=new ProductDao();
-		i=pdao.updateProduct(p);
+		int i= pdao.deleteProduct(pId);
+		
 		if(i>0) {
-			System.out.println("Update Succesfully 2");
+			System.out.println("Deleted Succesfully 2");
+			HttpSession httpSession = request.getSession();
+			httpSession.setAttribute("message","Product Deleted Succesfully!!");
+			response.sendRedirect("viewProducts.jsp");
 			
 		}else {
-			System.out.println("Not Updated 2!");
+			System.out.println("Not Deleted 2!");
+			/* session.setAttribute("message","Product not Deleted"); */
+			response.sendRedirect("viewProducts.jsp");
 			
 		}
-		
 	}
 
 	/**

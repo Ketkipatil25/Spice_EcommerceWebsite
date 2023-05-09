@@ -70,7 +70,9 @@ Map<String,Double> productcount=HelperDao.getCount_Product();
 								<img style= "max-width: 125px" class= "image fluid rounded-circle"  alt="user-img" src="img/team.png">
 							</div>
 							<h2><%= usercount.get("userCount") %></h2>
-							<h1 class = "text-uppercase text-muted">Users</h1>
+							<a style="text-decoration: none;" href="viewUsers.jsp"><h1 class = "text-uppercase text-muted">Users</h1>
+							</a>
+							
 						</div>
 					</div>
 				</div>
@@ -85,7 +87,10 @@ Map<String,Double> productcount=HelperDao.getCount_Product();
 							</div>
 							
 							<h2><%= categorycount.get("categoryCount") %></h2>
-							<h1 class = "text-uppercase text-muted">Categories</h1>
+							<a style="text-decoration:none;" href="viewCategories.jsp"   >
+						<h1 class = "text-uppercase text-muted">Categories</h1>
+							</a>
+							
 						</div>
 					</div>
 				</div>

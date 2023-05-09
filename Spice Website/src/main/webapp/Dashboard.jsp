@@ -50,21 +50,21 @@
                 <h1>Our Products</h1>
                 <hr>
                 <h2>Spices</h2>
-                <a class="view" href="spice.jsp">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
+                <a class="view" href="spice.jsp?category=C02">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
                 <br>
                 <img class="a1" src="img/kanwardeep-kaur-DpVzcatoBbQ-unsplash.jpg" alt="jar1">
                 <img class="a1" src="img/aditya-kulkarni-MCeNtqgbJUo-unsplash.jpg" alt="jar2">
                 <img class="a1" src="img/prchi-palwe-YUIMwavk7AQ-unsplash.jpg" alt="jar3">
                 <hr>
                 <h2>Gravy Mix</h2>
-                <a class="view" href="gravy.jsp">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
+                <a class="view" href="gravy.jsp?category=C03">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
                 <br>
                 <img class="a1" src="img/raman-sqcH2q7lkvo-unsplash.jpg" alt="jar1">
                 <img class="a1" src="img/rohit-mishra-0wGyhPOEhLU-unsplash (1).jpg" alt="jar2">
                 <img class="a1" src="img/navdeep-ammla-cnOWJhLKYN8-unsplash.jpg" alt="jar3">
                 <hr>
                 <h2>Pickles</h2>
-                <a class="view" href="pickles.jsp">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
+                <a class="view" href="pickles.jsp?category=C01">View all <i class="fa fa-long-arrow-right" style="font-size:24px"></i></a>
                 <br>
                 <img class="a1" src="img/1.jpg" alt="jar1">
                 <img class="a1" src="img/2.jpg" alt="jar2">
@@ -110,7 +110,7 @@
 
     <footer>
         <a href="#">FAQ</a>
-        <a href="mailto:patilketki@email.com">Contact us</a>
+        <a href="mailto:patilketki2501@gmail.com">Contact us</a>
         <a href="http://facebook.com/Swati.patil2512" target="_blank" rel="noopener noreferrer">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="https://www.instagram.com/invites/contact/?i=sjajpxffrbfi&utm_content=mrquill" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="#">Terms of Use</a>
